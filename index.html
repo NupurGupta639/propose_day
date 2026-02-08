@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Love Animation</title>
+  <style>
+    /* ===== Global Reset ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Georgia", serif;
+    }
+
+    /* ===== Background ===== */
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #ffb6c1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Floating particles for romantic effect */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 20, 147, 0.6);
+      border-radius: 50%;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ===== Scene ===== */
+    .scene {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== Character (Replaced with Emoji) ===== */
+    .character {
+      position: absolute;
+      left: 80px;
+      bottom: 40px;
+      font-size: 120px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .character:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    /* ===== Hearts ===== */
+    .heart-container {
+      position: absolute;
+      right: 180px;
+      top: 40px;
+      width: 320px;
+      height: 280px;
+      display: grid;
+      grid-template-columns: repeat(13, 1fr);
+      gap: 4px;
+    }
+
+    /* Individual Heart with denser red */
+    .heart {
+      width: 18px;
+      height: 18px;
+      background: linear-gradient(45deg, #8b0000, #dc143c);
+      clip-path: path("M9 16s-6-4.35-6-8a3.5 3.5 0 0 1 6-2.1A3.5 3.5 0 0 1 15 8c0 3.65-6 8-6 8z");
+      opacity: 0;
+      transform: scale(0.5) rotate(-10deg);
+      animation: pop 0.35s ease forwards;
+      box-shadow: 0 0 5px rgba(139, 0, 0, 0.5);
+      transition: transform 0.2s ease;
+    }
+
+    .heart:hover {
+      transform: scale(1.2);
+    }
+
+    /* ===== Heart Animation ===== */
+    @keyframes pop {
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    /* ===== Text ===== */
+    .love-text {
+      position: absolute;
+      bottom: 40px;
+      right: 260px;
+      font-size: 36px;
+      color: #a11b2b;
+      opacity: 0;
+      transition: opacity 1s ease, text-shadow 1s ease;
+      text-shadow: 0 0 8px rgba(161, 27, 43, 0.3);
+      cursor: pointer;
+    }
+
+    .love-text:hover {
+      text-shadow: 0 0 20px rgba(161, 27, 43, 0.8);
+    }
+
+    /* ===== Restart Button ===== */
+    .restart-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background: linear-gradient(45deg, #ff6b9d, #b11226);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .restart-btn:hover {
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ===== Responsive Design ===== */
+    @media (max-width: 768px) {
+      .scene {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+      }
+      .character {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        margin-bottom: 20px;
+        font-size: 80px;
+      }
+      .heart-container {
+        position: relative;
+        right: auto;
+        top: auto;
+        margin-bottom: 20px;
+      }
+      .love-text {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        text-align: center;
+      }
+      .restart-btn {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Particles -->
+  <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+  <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+  <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+  <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+  <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+  <div class="particle" style="left: 70%; animation-delay: 0s;"></div>
+  <div class="particle" style="left: 80%; animation-delay: 1s;"></div>
+  <div class="particle" style="left: 90%; animation-delay: 2s;"></div>
+
+  <!-- Main Scene Wrapper -->
+  <div class="scene">
+    <!-- Cute Character Replaced with Emoji -->
+    <div class="character">😘</div>
+
+    <!-- Heart Container -->
+    <div class="heart-container" id="heartContainer"></div>
+
+    <!-- Final Text -->
+    <div class="love-text" id="loveText">I Love You</div>
+  </div>
+
+  <!-- Restart Button -->
+  <button class="restart-btn" onclick="restartAnimation()">Restart Animation</button>
+
+  <script>
+    /* ===== Heart Shape Map (Exact from Video) ===== */
+    const heartPattern = [
+      "0011100011100",
+      "0111110111110",
+      "1111111111111",
+      "1111111111111",
+      "0111111111110",
+      "0011111111100",
+      "0001111111000",
+      "0000111110000",
+      "0000011100000",
+      "0000001000000"
+    ];
+
+    const container = document.getElementById("heartContainer");
+    const loveText = document.getElementById("loveText");
+
+    let delay = 0;
+    let hearts = [];
+
+    /* ===== Build Hearts Sequentially ===== */
+    function buildHearts() {
+      container.innerHTML = ''; // Clear previous hearts
+      delay = 0;
+      hearts = [];
+      heartPattern.forEach(row => {
+        row.split("").forEach(cell => {
+          if (cell === "1") {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.style.animationDelay = `${delay}s`;
+            container.appendChild(heart);
+            hearts.push(heart);
+            delay += 0.03;
+          } else {
+            const spacer = document.createElement("div");
+            container.appendChild(spacer);
+          }
+        });
+      });
+    }
+
+    buildHearts();
+
+    /* ===== Reveal Text After Animation ===== */
+    function revealText() {
+      setTimeout(() => {
+        loveText.style.opacity = "1";
+      }, delay * 1000 + 400);
+    }
+
+    revealText();
+
+    /* ===== Restart Function ===== */
+    function restartAnimation() {
+      // Reset hearts
+      hearts.forEach(heart => {
+        heart.style.opacity = "0";
+        heart.style.transform = "scale(0.5) rotate(-10deg)";
+        heart.style.animationDelay = "0s";
+      });
+      loveText.style.opacity = "0";
+      // Rebuild and restart
+      setTimeout(() => {
+        buildHearts();
+        revealText();
+      }, 100);
+    }
+  </script>
+</body>
+</html>

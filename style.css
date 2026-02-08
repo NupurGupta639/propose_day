@@ -1,0 +1,76 @@
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Georgia", serif;
+}
+
+/* ===== Background ===== */
+body {
+  height: 100vh;
+  background: linear-gradient(to bottom, #e6e6e2 0%, #f7f7f3 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ===== Scene ===== */
+.scene {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+}
+
+/* ===== Character ===== */
+.character {
+  position: absolute;
+  left: 80px;
+  bottom: 40px;
+  width: 160px;
+}
+
+/* ===== Hearts ===== */
+.heart-container {
+  position: absolute;
+  right: 180px;
+  top: 40px;
+  width: 320px;
+  height: 280px;
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  gap: 4px;
+}
+
+/* Individual Heart */
+.heart {
+  width: 18px;
+  height: 18px;
+  background: #b11226;
+  clip-path: path("M9 16s-6-4.35-6-8a3.5 3.5 0 0 1 6-2.1A3.5 3.5 0 0 1 15 8c0 3.65-6 8-6 8z");
+  opacity: 0;
+  transform: scale(0.5);
+  animation: pop 0.35s ease forwards;
+}
+
+/* ===== Heart Animation ===== */
+@keyframes pop {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== Text ===== */
+.love-text {
+  position: absolute;
+  bottom: 40px;
+  right: 260px;
+  font-size: 36px;
+  color: #a11b2b;
+  opacity: 0;
+  transition: opacity 1s ease;
+  text-shadow: 0 0 8px rgba(161, 27, 43, 0.3);
+}
